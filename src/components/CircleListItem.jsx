@@ -1,8 +1,8 @@
 import React from 'react'
 
-const CircleListItem = ({group}) =>{
+const CircleListItem = ({circle}) =>{
     return(
-        <li className={} key={group.id}>{group.name}</li>
+        <li className={} key={circle.id}>{circle.name}</li>
     )
 }
 
