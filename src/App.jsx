@@ -2,37 +2,41 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link, NavLink } from "react-router-dom"
 import Circles from './containers/Circles'
 import CircleForm from './containers/CircleForm'
+import CircleShow from './containers/CircleShow'
+import NewPost from './containers/NewPost'
 
 function App() {
-  return (
-    <div className="App">
-        <Router>
+    return (
+        <div className="App">
+          <Router>
             <nav className="text-center bg-blue-900 text-yellow-100 p-4" >
               <NavLink
-                    className="inline-block px-4 py-2"
-                    exact
-                    to="/"
-                    activeClassName="text-yellow-300"
-                >
-                    Circles
+                className="inline-block px-4 py-2"
+                exact
+                to="/"
+                activeClassName="text-yellow-300"
+              >
+                Circles
               </NavLink>
               <NavLink
-                    className="inline-block px-4 py-2"
-                    to="/circles/new"
-                    activeClassName="text-yellow-300"
-                >
-                    New Circles
+                className="inline-block px-4 py-2"
+                to="/circles/new"
+                activeClassName="text-yellow-300"
+              >
+                New Circles
               </NavLink>
             </nav>
-          <Switch>
-            <Route exact path="/">
-              <Circles />
-            </Route>
-            <Route path="/circles/new" component={CircleForm}/>
-          </Switch>
-        </Router>
-    </div>
-);
+            <Switch>
+              <Route exact path="/">
+                <Circles />
+              </Route>
+              <Route path="/circles/new" component={CircleForm}/>
+              <Route path="/circles/:circleId/posts/new" component={NewPost}/>
+              <Route path="/circles/:circleId" component={CircleShow}/>
+            </Switch>
+          </Router>
+        </div>
+    );
 }
 
 export default App;
