@@ -28,7 +28,9 @@ function App() {
             <Route exact path="/">
               <Circles />
             </Route>
-            <Route path="/circles/new">New Circle</Route>
+            <Route path="/circles/new">
+              <CircleForm />
+            </Route>
           </Switch>
         </Router>
     </div>
