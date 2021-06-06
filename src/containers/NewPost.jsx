@@ -18,7 +18,7 @@ export default class NewPost extends React.Component{
         })
             .then(response => response.json())
             .then(post => {
-                console.log(post)
+                this.props.history.push(`/circles/${this.state.circle_id}`)
             })
     }
 
