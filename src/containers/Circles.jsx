@@ -9,18 +9,26 @@ export default class Circles extends React.Component {
     }
 
     componentDidMount(){
-        this.setState({
-            circles: [
-                {id: 1, name: 'test1'},
-                {id: 2, name: 'test2'}
-            ],
-            loading: false
+        fetch('http://localhost:3001/circles', {
+            method: 'get',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(circles => {
+                console.log(circles)
+            this.setState({
+                circles: circles,
+                loading: false
+            })
         })
     }
 
     render(){
         return (
-            <section className="max-w-6xl mx-auto mt-16">
+            <section className="max-w-6xl w-11/12 mx-auto mt-16">
             {this.state.loading ? 'loading spinner' : <CirclesList circles={this.state.circles} />}
             </section>
         )
