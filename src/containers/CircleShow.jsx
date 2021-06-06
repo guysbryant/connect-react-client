@@ -13,7 +13,6 @@ export default class CircleShow extends React.Component{
                 .then(response => response.json())
             .then(({ circle, posts }) =>{
                     this.setState({circle, posts, loading: false})
-                    console.log(this.state)
         })
     }
 
@@ -22,7 +21,14 @@ export default class CircleShow extends React.Component{
             return <div>Loading Spinner</div>
         }
         return(
-            <section>Circle Show</section>
+            <section className="max-w-6xl w-11/12 mx-auto mt-16">
+              <h1 className="text-3xl font-bold text-center mb-8">{this.state.circle.name}</h1>
+              <div className="">
+                {this.state.posts.map(post =>
+                    <p>{post.text}</p>
+                )}
+              </div>
+            </section>
         )
     }
 }
