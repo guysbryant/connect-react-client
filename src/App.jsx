@@ -28,9 +28,7 @@ function App() {
             <Route exact path="/">
               <Circles />
             </Route>
-            <Route path="/circles/new">
-              <CircleForm />
-            </Route>
+            <Route path="/circles/new" component={CircleForm}/>
           </Switch>
         </Router>
     </div>

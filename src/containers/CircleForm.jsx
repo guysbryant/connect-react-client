@@ -17,7 +17,7 @@ export default class CircleForm extends React.Component{
         })
             .then(response => response.json())
             .then(circle => {
-                debugger
+                this.props.history.push('/')
             })
     }
 
