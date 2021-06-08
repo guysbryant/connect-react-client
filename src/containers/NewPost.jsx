@@ -36,7 +36,7 @@ export default class NewPost extends React.Component{
                 <textarea name="text"
                           onChange={this.changeHandler}
                           value={this.state.text}
-                          placeHolder="Text"
+                          placeholder="Text"
                           className="w-full border p-4 my-2"/>
               </fieldset>
               <button type="submit"
