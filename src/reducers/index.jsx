@@ -1,3 +1,6 @@
 import { combineReducers } from "redux"
+import CirclesReducer from './circles'
 
-export default combineReducers({})
+export default combineReducers({
+    circles: CirclesReducer
+})
