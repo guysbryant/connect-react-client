@@ -1,5 +1,7 @@
+import { LOADING_CIRCLES, LOADED_CIRCLES } from './'
 export const fetchCircles = () => {
     return (dispatch) => {
+        dispatch({type: LOADING_CIRCLES})
         fetch('http://localhost:3001/circles', {
             method: 'get',
             headers: {
@@ -9,11 +11,10 @@ export const fetchCircles = () => {
         })
             .then(response => response.json())
             .then(circles => {
-                console.log(circles)
-            this.setState({
-                circles: circles,
-                loading: false
-            })
+                dispatch({
+                    type: LOADED_CIRCLES,
+                    payload: circles
+                })
         })
         
     }
