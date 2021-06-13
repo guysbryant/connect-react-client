@@ -29,7 +29,7 @@ export default class CircleForm extends React.Component{
     render(){
         return(
             <form onSubmit={this.submitHandler} className="max-w-6xl w-3/4 mx-auto mt-16 shadow-lg-4 py-6">
-              <h1 className="text-center text-2xl font-semibold mb-2">New Circle</h1>
+              <h1 className="text-center text-3xl font-semibold mb-2">New Circle</h1>
               <fieldset>
                 <input type="text"
                        name="name"
