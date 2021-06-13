@@ -12,11 +12,7 @@ class CircleShow extends React.Component{
 
     componentDidMount = () =>{
         const circleId = this.props.match.params.circleId
-        fetch(`http://localhost:3001/circles/${circleId}`)
-            .then(response => response.json())
-            .then(({ circle, posts }) =>{
-                this.setState({circle, posts, loading: false})
-            })
+        this.props.fetchCircle(circleId)
     }
 
     render(){
