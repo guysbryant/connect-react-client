@@ -14,7 +14,7 @@ import { ADD_CIRCLE,
   Begin Loading
 */
 const defaultState = {
-    loading: "Not Loading",
+    status: "Not Loading",
     list: []
 }
 const CirclesReducer = (state=defaultState, action) =>{
