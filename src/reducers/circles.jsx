@@ -5,6 +5,14 @@ import { ADD_CIRCLE,
          LOADED_CIRCLE,
          LOADED_CIRCLE_POSTS
        } from '../actions'
+
+/* state.status options :
+  Not Loading
+  Loaded CirclesList
+  Loaded Circle
+  Loading Failed
+  Begin Loading
+*/
 const defaultState = {
     loading: "Not Loading",
     list: []
