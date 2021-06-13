@@ -16,20 +16,22 @@ class CircleShow extends React.Component{
     }
 
     render(){
-        if (this.state.loading){
-            return <div>Loading Spinner</div>
-        }
+        if (this.props.status === "Finished Loading Circle" || this.props.status === "Finished Loading Circles" ){
         return(
             <section className="max-w-6xl w-11/12 mx-auto mt-16">
-              <h1 className="text-3xl font-bold text-center mb-8">{this.state.circle.name}</h1>
-              <p className="my-2"><Link className="border-4" to={`/circles/${this.state.circle.id}/posts/new`}>Create New Post</Link></p>
+              <h1 className="text-3xl font-bold text-center mb-8">{this.props.circle.name}</h1>
+              <p className="my-2"><Link className="border-4" to={`/circles/${this.props.circle.id}/posts/new`}>Create New Post</Link></p>
               <div className="">
-                {this.state.posts.map(post =>
+                {this.props.posts.map(post =>
                     <p>{post.text}</p>
                 )}
               </div>
             </section>
         )
+        }
+        else{
+            return <div>Loading Spinner</div>
+        }
     }
 }
 
