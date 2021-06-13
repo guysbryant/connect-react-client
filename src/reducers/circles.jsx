@@ -1,7 +1,9 @@
 import { ADD_CIRCLE,
          LOADING_CIRCLES,
          LOADED_CIRCLES,
-         LOADING_FAILED
+         LOADING_FAILED,
+         LOADED_CIRCLE,
+         LOADED_CIRCLE_POSTS
        } from '../actions'
 const defaultState = {
     loading: "Not Loading",
