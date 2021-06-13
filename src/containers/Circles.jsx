@@ -5,11 +5,6 @@ import CirclesList from '../components/CirclesList'
 
 class Circles extends React.Component {
 
-    // state = {
-    //     circles: [],
-    //     loading: true
-    // }
-
     componentDidMount(){
         this.props.fetchCircles()
     }
