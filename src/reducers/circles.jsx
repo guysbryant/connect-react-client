@@ -19,10 +19,24 @@ const defaultState = {
 }
 const CirclesReducer = (state=defaultState, action) =>{
     switch(action.type){
-    case ADD_CIRCLE:
-        return {...state, loading: "Begin"}
+    case LOADING_CIRCLES:
+        return {...state, status: "Begin Loading"}
+    // case ADD_CIRCLE:
+    //     return {...state, status: "Begin Loading"}
     case LOADED_CIRCLES:
-        return { list: action.payload, loading: "Loaded"}
+        return {list: action.payload, status: "Finished Loading Circles"}
+    case LOADED_CIRCLE :
+        return {...state, list: action.payload, status: "Finished Loading Circle"}
+    case LOADED_CIRCLE_POSTS:
+        let circle = state.list.find(circle => circle.id == action.payload.circle.id)
+        if(circle){
+            return state
+        }else{
+            return {
+                status: "Finished Loading Circle",
+                list: [...state.list, action.payload.circle]
+            }
+        }
     default: return state
     }
 }
