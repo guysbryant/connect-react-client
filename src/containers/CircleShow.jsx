@@ -1,12 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { fetchCircle } from '../actions/circles'
 
-export default class CircleShow extends React.Component{
-    state={
-        circle: {},
-        posts: [],
-        loading: true
-    }
+class CircleShow extends React.Component{
+    // state={
+    //     circle: {},
+    //     posts: [],
+    //     status: "Loading"
+    // }
 
     componentDidMount = () =>{
         const circleId = this.props.match.params.circleId
@@ -34,3 +36,21 @@ export default class CircleShow extends React.Component{
         )
     }
 }
+
+const mapStateToProps = (state, {match}) => {
+    const circleId = match.params.circleId
+    const status = state.circles.status
+    return {
+        circle: state.circles.list.find(circle => circle.id == circleId),
+        posts: state.posts.list.filter(post => post.circle_id == circleId),
+        status
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchCircle: (circleId) => dispatch(fetchCircle(circleId))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CircleShow)
