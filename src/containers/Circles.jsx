@@ -10,12 +10,12 @@ class Circles extends React.Component {
     }
 
     render(){
-        if(this.props.loading === "Not Loading"){
+        if(this.props.status === "Not Loading"){
             return null
         }
         return (
             <section className="max-w-6xl w-11/12 mx-auto mt-16">
-            {this.props.loading === "Begin" ? 'loading spinner' : <CirclesList circles={this.props.circles} />}
+            {this.props.status === "Not Loading" ? 'loading spinner' : <CirclesList circles={this.props.circles} />}
             </section>
         )
     }
@@ -24,7 +24,7 @@ class Circles extends React.Component {
 const mapStateToProps = (state) => {
     return {
         circles: state.circles.list,
-        loading: state.circles.loading
+        status: state.circles.status,
     }
 }
 
