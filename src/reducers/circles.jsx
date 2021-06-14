@@ -3,7 +3,9 @@ import { ADD_CIRCLE,
          LOADED_CIRCLES,
          LOADING_FAILED,
          LOADED_CIRCLE,
-         LOADED_CIRCLE_POSTS
+         LOADED_CIRCLE_POSTS,
+         CREATED_CIRCLE,
+         ERROR_CREATING_CIRCLE
        } from '../actions'
 
 /* state.status options :
@@ -15,7 +17,8 @@ import { ADD_CIRCLE,
 */
 const defaultState = {
     status: "Not Loading",
-    list: []
+    list: [],
+    errors: {}
 }
 const CirclesReducer = (state=defaultState, action) =>{
     switch(action.type){
@@ -36,6 +39,13 @@ const CirclesReducer = (state=defaultState, action) =>{
                 status: "Finished Loading Circle",
                 list: [...state.list, action.payload.circle]
             }
+        }
+    case CREATED_CIRCLE:
+        return {
+            ...state,
+            status: "Created Circle",
+            list: [...state.list, action.payload],
+            errors: {}
         }
     default: return state
     }
