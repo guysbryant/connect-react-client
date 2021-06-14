@@ -1,7 +1,8 @@
 import {
     LOADING_CIRCLE_POSTS,
     LOADED_CIRCLE_POSTS,
-    LOADING_CIRCLE
+    LOADING_CIRCLE,
+    CREATED_POST
 } from '../actions'
 
 const initialState = {
@@ -23,7 +24,12 @@ export default function postReducer(state = initialState,
                 ...state.circlesLoaded,
                 [action.payload.circle.id]: 'Loaded',
             },
-            list: state.list.concat(action.payload.posts) 
+            list: action.payload.posts
+        }
+        CREATED_POST:
+        return{
+            ...state,
+            list: [...state.list, action.payload]
         }
     default:
         return state
