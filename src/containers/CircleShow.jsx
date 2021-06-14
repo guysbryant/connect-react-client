@@ -4,11 +4,6 @@ import { connect } from 'react-redux'
 import { fetchCircle } from '../actions/circles'
 
 class CircleShow extends React.Component{
-    // state={
-    //     circle: {},
-    //     posts: [],
-    //     status: "Loading"
-    // }
 
     componentDidMount = () =>{
         const circleId = this.props.match.params.circleId
