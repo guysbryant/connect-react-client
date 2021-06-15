@@ -33,7 +33,7 @@ class NewPost extends React.Component{
               <fieldset className="">
                 <label htmlFor="text" className="block uppercase">
                   Name{" "}
-                  <span className="text-red-400">{this.state.errors.nname}</span>
+                  <span className="text-red-400">{this.state.errors.name}</span>
                 </label>
                 <textarea name="text"
                           onChange={this.changeHandler}

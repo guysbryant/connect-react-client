@@ -15,7 +15,7 @@ class Circles extends React.Component {
         }
         return (
             <section className="max-w-6xl w-11/12 mx-auto mt-16">
-            {this.props.status === "Not Loading" ? 'loading spinner' : <CirclesList circles={this.props.circles} />}
+              {this.props.status === "Not Loading" ? 'loading spinner' : <CirclesList circles={this.props.circles} />}
             </section>
         )
     }
