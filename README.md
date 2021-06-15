@@ -1,5 +1,8 @@
 # Getting Started with Create React App
 
+This is the frontend of my project.
+The backend is located at: https://github.com/guysbryant/connect-api
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
