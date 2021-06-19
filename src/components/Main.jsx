@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Switch, Route } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom"
 import Circles from '../containers/Circles'
 import CircleForm from '../containers/CircleForm'
 import CircleShow from '../containers/CircleShow'
