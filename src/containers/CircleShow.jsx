@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchCircle } from '../actions/circles'
+import ManageCircle from './ManageCircle'
 
 class CircleShow extends React.Component{
-
     componentDidMount = () =>{
         const circleId = this.props.match.params.circleId
         this.props.fetchCircle(circleId)
@@ -12,19 +12,22 @@ class CircleShow extends React.Component{
 
     render(){
         if (this.props.status === "Finished Loading Circle" || this.props.status === "Finished Loading Circles" ){
-        return(
-            <section className="max-w-6xl w-11/12 mx-auto mt-16">
-              <h1 className="text-3xl font-bold text-center mb-8">{this.props.circle.name}</h1>
-              <p className="my-2">
-                <Link className="border-4" to={`/circles/${this.props.circle.id}/posts/new`}>Create New Post</Link>
-              </p>
-              <div className="">
-                {this.props.posts.map(post =>
-                    <p>{post.text}</p>
-                )}
-              </div>
-            </section>
-        )
+            return(
+                <>
+                  <Link to={`/circles/${this.props.circle.id}/manage`}>Manage Circle</Link>
+                  <section className="max-w-6xl w-11/12 mx-auto mt-16">
+                    <h1 className="text-3xl font-bold text-center mb-8">{this.props.circle.name}</h1>
+                    <p className="my-2">
+                      <Link className="border-4" to={`/circles/${this.props.circle.id}/posts/new`}>Create New Post</Link>
+                    </p>
+                    <div className="">
+                      {this.props.posts.map(post =>
+                          <p>{post.text}</p>
+                      )}
+                    </div>
+                  </section>
+                </>
+            )
         }
         else{
             return <div>Loading Spinner</div>
@@ -37,6 +40,7 @@ const mapStateToProps = (state, {match}) => {
     const status = state.circles.status
     return {
         circle: state.circles.list.find(circle => circle.id == circleId),
+        url:  `http://localhost:3001/circles/${circleId}`,
         posts: state.posts.list.filter(post => post.circle_id == circleId),
         status
     }

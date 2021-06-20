@@ -4,6 +4,7 @@ import Circles from '../containers/Circles'
 import CircleForm from '../containers/CircleForm'
 import CircleShow from '../containers/CircleShow'
 import NewPost from '../containers/NewPost'
+import ManageCircle from '../containers/ManageCircle'
 
 
 const Main = () =>{
@@ -15,6 +16,7 @@ const Main = () =>{
             </Route>
             <Route path="/circles/new" component={CircleForm}/>
             <Route path="/circles/:circleId/posts/new" component={NewPost}/>
+            <Route path="/circles/:circleId/manage" component={ManageCircle}/>
             <Route path="/circles/:circleId" component={CircleShow}/>
         </Switch>
     </main>

@@ -7,7 +7,10 @@ class CircleForm extends React.Component{
         name: '',
         errors: {}
     }
-
+    changeHandler = (event) =>{
+        const { name, value } = event.target
+        this.setState({[name]: value})
+    }
     submitHandler = (event) =>{
         event.preventDefault()
         this.props.createCircle(this.state)
@@ -20,12 +23,6 @@ class CircleForm extends React.Component{
                 })
             })
     }
-
-    changeHandler = (event) =>{
-        const { name, value } = event.target
-        this.setState({[name]: value})
-    }
-
     render(){
         return(
             <form onSubmit={this.submitHandler} className="max-w-6xl w-3/4 mx-auto mt-16 shadow-lg-4 py-6">

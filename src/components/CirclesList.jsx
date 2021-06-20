@@ -6,7 +6,9 @@ const CirclesList = ({circles}) =>{
         <>
           <h1>Circles List</h1>
             <ul>
-              {circles.map(circle => <CircleListItem key={circle.id} circle={circle} />)}
+              {circles.map(circle =>
+                  <CircleListItem key={circle.id}
+                                  circle={circle} />)}
             </ul>
         </>
     )

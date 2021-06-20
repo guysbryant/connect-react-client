@@ -5,7 +5,8 @@ import { ADD_CIRCLE,
          LOADED_CIRCLE,
          LOADED_CIRCLE_POSTS,
          CREATED_CIRCLE,
-         ERROR_CREATING_CIRCLE
+         ERROR_CREATING_CIRCLE,
+         UPDATE_CIRCLE
        } from '../actions'
 
 /* state.status options :
@@ -29,8 +30,8 @@ const CirclesReducer = (state=defaultState, action) =>{
     case LOADED_CIRCLE :
         return {...state, list: action.payload, status: "Finished Loading Circle"}
     case LOADED_CIRCLE_POSTS:
-        let circle = state.list.find(circle => circle.id == action.payload.circle.id)
-        if(circle){
+        let postCircle = state.list.find(circle => circle.id == action.payload.circle.id)
+        if(postCircle){
             return state
         }else{
             return {
@@ -44,6 +45,21 @@ const CirclesReducer = (state=defaultState, action) =>{
             status: "Created Circle",
             list: [...state.list, action.payload],
             errors: {}
+        }
+    case UPDATE_CIRCLE:
+        let circle = state.list.find(circle => circle.id == action.payload.id)
+        let updatedCircle = {...circle, name: action.payload.name}
+        let filteredList = [ ...state.list ].filter(circle => circle.id !== action.payload.id)
+        if (filteredList.length > 0){
+            return {
+                ...state,
+                list: [filteredList, updatedCircle]
+            }
+        }else{
+            return{
+                ...state,
+                list: [updatedCircle]
+            }
         }
     default: return state
     }
