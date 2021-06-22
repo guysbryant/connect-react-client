@@ -2,10 +2,17 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import { updateCircle } from '../actions/circles'
-
+import { fetchCircle } from '../actions/circles'
 class ManageCircle extends React.Component {
-    state={
-        name: this.props.circle.name
+    constructor(props){
+        super(props)
+        if (props.circle){
+            this.state={
+                name: props.circle.name
+            }
+        }else{
+            props.history.push('/')
+        }
     }
     changeHandler = (event) =>{
         const {name, value} = event.target
@@ -22,10 +29,11 @@ class ManageCircle extends React.Component {
 
     componentDidMount = () =>{
         const circleId = this.props.match.params.circleId
-        // this.props.fetchCircle(circleId)
+        this.props.fetchCircle(circleId)
     }
 
     render(){
+        if (this.props.circle){
         return(
             <>
               <section className="max-w-6xl w-11/12 mx-auto mt-16">
@@ -44,6 +52,9 @@ class ManageCircle extends React.Component {
                 </form></section>
             </>
         )
+        }else{
+            return <div>Loading Spinner</div>
+        }
     }
 }
 const mapStateToProps = (state, {match}) => {
@@ -59,9 +70,9 @@ const mapStateToProps = (state, {match}) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        fetchCircle: (circleId) => dispatch(fetchCircle(circleId)),
         updateCircle: (url, formData) => dispatch(updateCircle(url, formData))
     }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ManageCircle)
-
