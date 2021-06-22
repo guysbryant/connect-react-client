@@ -18,13 +18,6 @@ export const updateCircle = (url, formData) => {
             },
             body: JSON.stringify({circle: formData}),
         })
-            // .then(response => {
-            //     if (response.ok){
-            //         return response.json()
-            //     }else{
-            //         return response.json().then(errors => Promise.reject(errors))
-            //     }
-            // })
             .then(response => response.json())
             .then(circle => {
                 dispatch({type: UPDATE_CIRCLE,
