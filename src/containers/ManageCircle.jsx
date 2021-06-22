@@ -4,16 +4,7 @@ import {connect} from 'react-redux'
 import { updateCircle } from '../actions/circles'
 import { fetchCircle } from '../actions/circles'
 class ManageCircle extends React.Component {
-    constructor(props){
-        super(props)
-        if (props.circle){
-            this.state={
-                name: props.circle.name
-            }
-        }else{
-            props.history.push('/')
-        }
-    }
+    state={}
     changeHandler = (event) =>{
         const {name, value} = event.target
         this.setState({[name]: value})
@@ -46,7 +37,9 @@ class ManageCircle extends React.Component {
                            name="name"
                            className="border-2 m-2 text-3xl font-bold text-center mb-8"
                            onChange={this.changeHandler}
-                           value={this.state.name}/>
+                           defaultValue={this.props.circle.name}
+                           value={this.state.name}
+                      />
                     <input type="submit"/>
                   </label>
                 </form></section>
