@@ -5,7 +5,8 @@ import { LOADING_CIRCLES,
          LOADED_CIRCLE_POSTS,
          CREATED_CIRCLE,
          ERROR_CREATING_CIRCLE,
-         UPDATE_CIRCLE
+         UPDATE_CIRCLE,
+         DELETE_CIRCLE
        } from './'
 
 export const updateCircle = (url, formData) => {
@@ -22,6 +23,18 @@ export const updateCircle = (url, formData) => {
             .then(circle => {
                 dispatch({type: UPDATE_CIRCLE,
                           payload: circle})
+            })
+    }
+}
+
+export const deleteCircle =(url, circleId) =>{
+    return(dispatch) => {
+        return fetch(url, {
+            method: 'DELETE',
+        })
+            .then(() => {
+                dispatch({type: DELETE_CIRCLE,
+                          payload: circleId})
             })
     }
 }

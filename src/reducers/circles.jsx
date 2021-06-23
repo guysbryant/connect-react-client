@@ -6,7 +6,8 @@ import { ADD_CIRCLE,
          LOADED_CIRCLE_POSTS,
          CREATED_CIRCLE,
          ERROR_CREATING_CIRCLE,
-         UPDATE_CIRCLE
+         UPDATE_CIRCLE,
+         DELETE_CIRCLE
        } from '../actions'
 
 /* state.status options :
@@ -60,6 +61,10 @@ const CirclesReducer = (state=defaultState, action) =>{
                 ...state,
                 list: [updatedCircle]
             }
+        }
+    case DELETE_CIRCLE:
+        return {
+            ...state, list: [...state.list].filter(circle => circle.id !== action.payload)
         }
     default: return state
     }
